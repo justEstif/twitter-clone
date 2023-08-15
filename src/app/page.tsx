@@ -7,9 +7,9 @@ export default async function Home() {
   const { data: tweets } = await supabase.from("tweets").select();
 
   return (
-    <>
+    <div>
       <AuthButton />
       <pre>{JSON.stringify(tweets, null, 2)}</pre>
-    </>
+    </div>
   );
 }
