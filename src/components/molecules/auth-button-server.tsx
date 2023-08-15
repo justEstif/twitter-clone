@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { AuthButtonClient } from "./auth-button-client";
 
 export async function AuthButtonServer({}) {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createServerComponentClient<Database>({ cookies });
   const {
     data: { session },
   } = await supabase.auth.getSession();
