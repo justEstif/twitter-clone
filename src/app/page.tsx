@@ -1,4 +1,5 @@
 import { AuthButtonServer } from "@/components/molecules/auth-button-server";
+import { NewTweet } from "@/components/molecules/new-tweet";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -20,6 +21,7 @@ export default async function Home() {
   return (
     <div>
       <AuthButtonServer />
+      <NewTweet />
       <pre>{JSON.stringify(tweets, null, 2)}</pre>
     </div>
   );
