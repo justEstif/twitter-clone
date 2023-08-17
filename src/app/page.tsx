@@ -1,6 +1,7 @@
 import { AuthButtonServer } from "@/components/molecules/auth-button-server";
 import { Likes } from "@/components/molecules/likes";
 import { NewTweet } from "@/components/molecules/new-tweet";
+import { Tweets } from "@/components/molecules/tweets";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -31,16 +32,7 @@ export default async function Home() {
     <div>
       <AuthButtonServer />
       <NewTweet />
-      {tweets?.map((tweet) => (
-        <div key={tweet.id}>
-          <p>
-            {tweet.author.name} {tweet.author.username}
-          </p>
-          <p>{tweet.title}</p>
-          <Likes tweet={tweet} />
-        </div>
-      ))}
-      <pre>{JSON.stringify(tweets, null, 2)}</pre>
+      <Tweets tweets={tweets} />
     </div>
   );
 }
