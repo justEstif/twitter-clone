@@ -1,3 +1,4 @@
+import { NavBar } from "@/components/molecules/nav-bar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -17,7 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="container mx-auto">{children}</main>
+        <NavBar />
+        <main className="container m-auto">{children}</main>
       </body>
     </html>
   );
