@@ -1,5 +1,3 @@
-import { AuthButtonServer } from "@/components/molecules/auth-button-server";
-import { Likes } from "@/components/molecules/likes";
 import { NewTweet } from "@/components/molecules/new-tweet";
 import { Tweets } from "@/components/molecules/tweets";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
@@ -18,7 +16,8 @@ export default async function Home() {
 
   const { data } = await supabase
     .from("tweets")
-    .select("*, author: profiles(*), likes(user_id)");
+    .select("*, author: profiles(*), likes(user_id)")
+    .order("created_at", { ascending: false });
   const tweets =
     data?.map((tweet) => ({
       ...tweet,
@@ -30,8 +29,7 @@ export default async function Home() {
     })) ?? [];
   return (
     <div>
-      <AuthButtonServer />
-      <NewTweet />
+      <NewTweet user={session.user} />
       <Tweets tweets={tweets} />
     </div>
   );
