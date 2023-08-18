@@ -26,11 +26,11 @@ export function AuthButtonClient({ session }: { session: Session | null }) {
   };
 
   return session ? (
-    <button onClick={handleSignOut} className="btn btn-ghost">
+    <button onClick={handleSignOut} className="text-gray-600 hover:underline underline-offset-2">
       Sign out
     </button>
   ) : (
-    <button onClick={handleSignIn} className="btn btn-primary">
+    <button onClick={handleSignIn} className="btn btn-ghost">
       Sign in
     </button>
   );
